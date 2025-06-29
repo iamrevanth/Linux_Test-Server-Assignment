@@ -1,6 +1,6 @@
 # Linux_Test-Server-Assignment
 
-Task 1: System Monitoring Setup
+# Task 1: System Monitoring Setup
 	Objective: Configure a monitoring system to ensure the development environment’s health, performance, and capacity planning.
 Scenario:
 •	The development server is reporting intermittent performance issues.
@@ -31,7 +31,7 @@ d)	Test run of scripts:
  
 
 
-Task 2: User Management and Access Control
+# Task 2: User Management and Access Control
 	
 Objective: Set up user accounts and configure secure access controls for the new developers.
 Scenario:
@@ -49,8 +49,8 @@ iv)	Implement a password policy to enforce expiration and complexity (e.g., pass
 	
 Solution:
 1)	Create User Accounts with Secure Passwords
-# adduser Sarah
-# adduser mike
+	$ adduser Sarah
+	$ adduser mike
 
  
 
@@ -64,17 +64,17 @@ chown mike:mike /home/mike/workspace
 
 4)	Restrict Directory Access
 Set permissions so only the respective user can access their workspace:
-# chmod 700 /home/Sarah/workspace
-# chmod 700 /home/mike/workspace
+	$ chmod 700 /home/Sarah/workspace
+	$ chmod 700 /home/mike/workspace
 
 5)	 Enforce Password Expiration Policy
 Set passwords to expire every 30 days and warn users 7 days before expiration:
-# chage -M 30 -W 7 sarah
-# chage -M 30 -W 7 mike
+	$ chage -M 30 -W 7 sarah
+	$ chage -M 30 -W 7 mike
  
 6)	 Enforce Password Complexity
 a)	Install the PAM password quality module if not already present:
-#  apt install libpam-pwquality
+	$ apt install libpam-pwquality
 b)	Edit /etc/pam.d/common-password to enforce complexity (at least 12 characters, upper/lowercase, digit, special character):
 Change like -> “password requisite pam_pwquality.so retry=3”
 To
@@ -84,7 +84,7 @@ To
  
 
 
-Task 3: Backup Configuration for Web Servers
+# Task 3: Backup Configuration for Web Servers
 	
 Objective: Configure automated backups for Sarah’s Apache server and Mike’s Nginx server to ensure data integrity and recovery.
 Scenario:
@@ -113,8 +113,8 @@ Solution:
 
 1)	Create the /backups/ directory (if it does not exist):
 mkdir -p /backups/
-chown sarah:sarah /backups/   # for Sarah's server
-chown mike:mike /backups/     # for Mike's server
+chown sarah:sarah /backups/   
+chown mike:mike /backups/    
 
  
 
